@@ -22,6 +22,15 @@ Acesse http://localhost:8000. As fotos originais do cardápio dependem de intern
 
 O projeto usa HTML, CSS responsivo com Grid e Flexbox, JavaScript e `localStorage`. O carrinho reaproveita o formato de dados do Fast Lanches no mesmo navegador e origem. A demonstração não cobra, envia pedidos ou autentica usuários.
 
+## Problemas enfrentados
+
+- **Adaptar o cardápio original.** Os produtos do Fast Lanches estavam espalhados pelas gavetas do menu. Reunimos os dados em `dist/js/catalogo.js`, preservando nomes, categorias e preços e permitindo a busca por nome com ou sem acentos.
+- **Manter o carrinho entre páginas.** Os itens precisavam continuar disponíveis ao sair do cardápio e abrir a finalização. O carrinho usa `localStorage` e reaproveita o formato de dados do projeto original. Testamos a adição de itens, a mudança de quantidades e o recálculo do total.
+- **Adaptar o layout para celular.** O cardápio, os filtros e os controles do carrinho precisavam caber em telas estreitas. Usamos CSS Grid para ajustar as colunas e Flexbox para permitir a quebra de linha dos controles. A validação visual no celular ficou pendente porque a prévia do ambiente de teste não abriu.
+- **Adaptar a finalização para a cantina.** Substituímos os dados de entrega por um apelido fictício para retirada. O fluxo foi testado como pré-reserva simulada, com seleção da forma de pagamento.
+
+As situações-problema do enunciado sobre conflito em `index.html`, integração de uma oferta urgente e botões sobrepostos estão explicadas em [APRESENTACAO.md](APRESENTACAO.md).
+
 ## Integrantes
 
 | Função | Integrante |
