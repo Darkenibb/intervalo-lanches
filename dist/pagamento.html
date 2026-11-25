@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cardápio, ofertas e pedidos demonstrativos da cantina escolar.">
+  <title>Finalização | Intervalo Lanches</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/catalogo.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body data-page="pagamento.html">
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <header><div class="wrap bar">
+    <a class="brand" href="index.html">Intervalo<span>Lanches</span></a>
+    <nav aria-label="Navegação principal"><a href="index.html#cardapio">Cardápio</a><a href="index.html#ofertas">Ofertas</a><a href="login.html">Perfil</a><a class="cart-link" href="carrinho.html">Carrinho <span id="contador">0</span></a></nav>
+  </div></header>
+  <main class="wrap" id="conteudo">
+<h1 class="page-title">Finalize seu pedido</h1>
+<div class="flow"><form id="pedido" class="panel"><h2>Retirada na cantina</h2>
+<p>Este pedido é demonstrativo. Use um apelido fictício.</p>
+<label>Apelido para a retirada <input id="apelido" maxlength="30" required placeholder="Ex.: Estudante 01"></label>
+<fieldset><legend>Forma de pagamento simulada</legend>
+<label class="radio"><input type="radio" name="metodo" value="Pix" checked> Pix</label>
+<label class="radio"><input type="radio" name="metodo" value="Cartão"> Cartão</label>
+<label class="radio"><input type="radio" name="metodo" value="Na retirada"> Na retirada</label></fieldset>
+<button type="submit" id="confirmar">Simular pré-reserva</button><p id="confirmacao" role="status"></p></form>
+<aside class="panel summary"><h2>Seu pedido</h2><div id="itens"></div><p class="total">Total <strong id="total"></strong></p>
+<a href="carrinho.html">Voltar ao carrinho</a></aside></div></main>
+  <footer class="wrap"><span>Intervalo Lanches · Projeto escolar</span><a href="trabalho/index.html">Arquivos do projeto</a></footer>
+</body>
+</html>

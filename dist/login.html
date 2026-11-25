@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cardápio, ofertas e pedidos demonstrativos da cantina escolar.">
+  <title>Perfil | Intervalo Lanches</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/catalogo.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body data-page="login.html">
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <header><div class="wrap bar">
+    <a class="brand" href="index.html">Intervalo<span>Lanches</span></a>
+    <nav aria-label="Navegação principal"><a href="index.html#cardapio">Cardápio</a><a href="index.html#ofertas">Ofertas</a><a href="login.html">Perfil</a><a class="cart-link" href="carrinho.html">Carrinho <span id="contador">0</span></a></nav>
+  </div></header>
+  <main class="wrap" id="conteudo">
+<h1 class="page-title">Perfil de demonstração</h1>
+<form id="perfil" class="panel profile"><h2>Como quer ser chamado?</h2>
+<p>O apelido fica salvo neste navegador para preencher a retirada.</p>
+<label>Apelido <input id="apelido" maxlength="30" required placeholder="Ex.: Estudante 01"></label>
+<button type="submit">Salvar apelido</button>
+<button type="button" class="secondary" id="sair">Apagar apelido</button>
+<p id="perfil-status" role="status"></p><a href="index.html#cardapio">Voltar ao cardápio</a></form></main>
+  <footer class="wrap"><span>Intervalo Lanches · Projeto escolar</span><a href="trabalho/index.html">Arquivos do projeto</a></footer>
+</body>
+</html>
