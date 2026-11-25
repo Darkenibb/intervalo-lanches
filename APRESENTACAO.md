@@ -21,12 +21,4 @@ O Intervalo Lanches adapta o site Fast Lanches para o cenário da cantina escola
 2. O Intervalo Lanches usa Grid para reorganizar o cardápio e as colunas do carrinho. Flexbox permite que a navegação, os filtros e os controles de quantidade quebrem linha em telas estreitas.
 3. Para validar, teste em 320, 375, 768 e 1280 pixels. Confira se há rolagem horizontal, se os botões são tocáveis e se a busca, o carrinho e a finalização funcionam. Repita em um celular real.
 
-## Roteiro de cinco minutos
 
-| Tempo | O que apresentar |
-| --- | --- |
-| 0:00–0:40 | Explique o problema da fila e mostre a nova página inicial do Intervalo Lanches, adaptada do Fast Lanches. |
-| 0:40–1:50 | Mostre as duas ofertas. Busque “pao de queijo” e adicione um produto. Selecione uma categoria para limpar a busca e ver os itens dela. |
-| 1:50–2:50 | Abra o carrinho, altere a quantidade e confira o total. Simule a pré-reserva com o apelido “Estudante 01” e escolha um pagamento demonstrativo. |
-| 2:50–3:35 | Mostre a tela em largura de celular. Aponte a quebra de linha dos filtros e dos botões do carrinho. |
-| 3:35–5:00 | Execute `git branch -a` e `git log --oneline --graph --all`. Aponte as branches da revisão e explique como a equipe resolveria edições concorrentes e integraria uma oferta urgente. |
