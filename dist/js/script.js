@@ -1,9 +1,14 @@
 const chaveCarrinho = 'carrinhoFastLanches';
 const chavePerfil = 'intervaloLanchesPerfil';
 const moeda = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
-const preco = cents => moeda.format(cents / 100);
-const elemento = id => document.getElementById(id);
-const textoBusca = texto => texto.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase().trim();
+const preco = (cents) => moeda.format(cents / 100);
+const elemento = (id) => document.getElementById(id);
+const textoBusca = (texto) =>
+  texto
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .toLowerCase()
+    .trim();
 const pagina = document.body.dataset.page;
 
 function ler(chave, padrao) {
@@ -16,7 +21,10 @@ function ler(chave, padrao) {
 
 const salvos = ler(chaveCarrinho, []);
 let carrinho = Array.isArray(salvos)
-  ? salvos.filter(item => item && typeof item.nome === 'string' && Number.isFinite(item.preco) && item.preco >= 0)
+  ? salvos.filter(
+      (item) =>
+        item && typeof item.nome === 'string' && Number.isFinite(item.preco) && item.preco >= 0,
+    )
   : [];
 
 function criar(tag, texto, classe) {
@@ -46,8 +54,13 @@ function totalCarrinho() {
 
 function montarCatalogo() {
   const categorias = [
-    ['destaque', 'Destaques'], ['todos', 'Todos'], ['combos-dia', 'Combos do dia'],
-    ['lanches', 'Lanches'], ['doces', 'Doces'], ['bebidas', 'Bebidas'], ['combos', 'Combos'],
+    ['destaque', 'Destaques'],
+    ['todos', 'Todos'],
+    ['combos-dia', 'Combos do dia'],
+    ['lanches', 'Lanches'],
+    ['doces', 'Doces'],
+    ['bebidas', 'Bebidas'],
+    ['combos', 'Combos'],
   ];
   const busca = elemento('busca');
   const produtos = elemento('produtos');
@@ -60,13 +73,15 @@ function montarCatalogo() {
     adicionar(produto);
     notificacao.textContent = produto.name + ' adicionado ao carrinho.';
     clearTimeout(temporizador);
-    temporizador = setTimeout(() => { notificacao.textContent = ''; }, 2600);
+    temporizador = setTimeout(() => {
+      notificacao.textContent = '';
+    }, 2600);
   }
 
   function atualizar() {
     const termo = textoBusca(busca.value);
     const nomes = new Set();
-    const filtrados = catalogo.filter(produto => {
+    const filtrados = catalogo.filter((produto) => {
       if (!termo && categoria !== 'todos') return produto.category === categoria;
       const chave = produto.name + produto.cents;
       if (nomes.has(chave) || !textoBusca(produto.name).includes(termo)) return false;
@@ -77,26 +92,37 @@ function montarCatalogo() {
       ? filtrados.length + (filtrados.length === 1 ? ' produto' : ' produtos')
       : 'Nenhum produto encontrado.';
     for (const botao of filtros.children) {
-      botao.setAttribute('aria-pressed', String((termo ? 'todos' : categoria) === botao.dataset.category));
+      botao.setAttribute(
+        'aria-pressed',
+        String((termo ? 'todos' : categoria) === botao.dataset.category),
+      );
     }
-    produtos.replaceChildren(...filtrados.map(produto => {
-      const card = criar('article', '', 'product');
-      const foto = criar('img');
-      foto.src = produto.image;
-      foto.alt = '';
-      foto.loading = 'lazy';
-      foto.addEventListener('error', () => { foto.hidden = true; }, { once: true });
-      const conteudo = criar('div', '', 'product-copy');
-      const rodape = criar('div', '', 'product-end');
-      const botao = criar('button', 'Adicionar');
-      botao.type = 'button';
-      botao.setAttribute('aria-label', 'Adicionar ' + produto.name);
-      botao.addEventListener('click', () => incluir(produto));
-      rodape.append(criar('strong', preco(produto.cents)), botao);
-      conteudo.append(criar('h3', produto.name), rodape);
-      card.append(foto, conteudo);
-      return card;
-    }));
+    produtos.replaceChildren(
+      ...filtrados.map((produto) => {
+        const card = criar('article', '', 'product');
+        const foto = criar('img');
+        foto.src = produto.image;
+        foto.alt = '';
+        foto.loading = 'lazy';
+        foto.addEventListener(
+          'error',
+          () => {
+            foto.hidden = true;
+          },
+          { once: true },
+        );
+        const conteudo = criar('div', '', 'product-copy');
+        const rodape = criar('div', '', 'product-end');
+        const botao = criar('button', 'Adicionar');
+        botao.type = 'button';
+        botao.setAttribute('aria-label', 'Adicionar ' + produto.name);
+        botao.addEventListener('click', () => incluir(produto));
+        rodape.append(criar('strong', preco(produto.cents)), botao);
+        conteudo.append(criar('h3', produto.name), rodape);
+        card.append(foto, conteudo);
+        return card;
+      }),
+    );
   }
 
   for (const [id, nome] of categorias) {
@@ -110,9 +136,14 @@ function montarCatalogo() {
     });
     filtros.append(botao);
   }
-  for (const [oferta, nome] of [['dia', 'X-Burguer + Refrigerante'], ['semana', 'Cachorro-quente + Suco']]) {
-    const produto = catalogo.find(item => item.category === 'combos' && item.name === nome);
-    document.querySelector('[data-offer="' + oferta + '"]').addEventListener('click', () => incluir(produto));
+  for (const [oferta, nome] of [
+    ['dia', 'X-Burguer + Refrigerante'],
+    ['semana', 'Cachorro-quente + Suco'],
+  ]) {
+    const produto = catalogo.find((item) => item.category === 'combos' && item.name === nome);
+    document
+      .querySelector('[data-offer="' + oferta + '"]')
+      .addEventListener('click', () => incluir(produto));
   }
   busca.addEventListener('input', atualizar);
   atualizar();
@@ -137,7 +168,17 @@ function montarResumo(editavel) {
     if (editavel) {
       const controles = criar('div', '', 'controls');
       for (const [rotulo, acao, nome] of [
-        ['−', () => carrinho.splice(carrinho.findIndex(produto => produto.nome === item.nome && produto.preco === item.preco), 1), 'Retirar'],
+        [
+          '−',
+          () =>
+            carrinho.splice(
+              carrinho.findIndex(
+                (produto) => produto.nome === item.nome && produto.preco === item.preco,
+              ),
+              1,
+            ),
+          'Retirar',
+        ],
         ['+', () => carrinho.push(item), 'Adicionar'],
       ]) {
         const botao = criar('button', rotulo, 'secondary');
@@ -147,8 +188,14 @@ function montarResumo(editavel) {
           acao();
           salvarCarrinho();
           montarResumo(true);
-          const proximo = Array.from(lista.querySelectorAll('button')).find(visitado => visitado.getAttribute('aria-label') === botao.getAttribute('aria-label'));
-          (proximo || lista.querySelector('button') || document.querySelector('.summary a:last-child')).focus();
+          const proximo = Array.from(lista.querySelectorAll('button')).find(
+            (visitado) => visitado.getAttribute('aria-label') === botao.getAttribute('aria-label'),
+          );
+          (
+            proximo ||
+            lista.querySelector('button') ||
+            document.querySelector('.summary a:last-child')
+          ).focus();
         });
         controles.append(botao);
       }
@@ -186,7 +233,7 @@ if (pagina === 'pagamento.html' || pagina === 'login.html') {
   apelido.value = typeof perfil === 'string' ? perfil : '';
   apelido.addEventListener('input', () => apelido.setCustomValidity(''));
   const formulario = elemento(pagina === 'pagamento.html' ? 'pedido' : 'perfil');
-  formulario.addEventListener('submit', evento => {
+  formulario.addEventListener('submit', (evento) => {
     evento.preventDefault();
     const nome = apelido.value.trim();
     if (!nome) {
@@ -201,18 +248,25 @@ if (pagina === 'pagamento.html' || pagina === 'login.html') {
     }
     if (!carrinho.length) return;
     const metodo = new FormData(formulario).get('metodo');
-    elemento('confirmacao').textContent = 'Pré-reserva simulada para ' + nome + '. Total de '
-      + preco(totalCarrinho()) + '. Pagamento simulado: ' + metodo + '.';
+    elemento('confirmacao').textContent =
+      'Pré-reserva simulada para ' +
+      nome +
+      '. Total de ' +
+      preco(totalCarrinho()) +
+      '. Pagamento simulado: ' +
+      metodo +
+      '.';
     carrinho = [];
     salvarCarrinho();
     montarResumo(false);
   });
   if (pagina === 'pagamento.html') montarResumo(false);
-  else elemento('sair').addEventListener('click', () => {
-    localStorage.removeItem(chavePerfil);
-    apelido.value = '';
-    apelido.setCustomValidity('');
-    elemento('perfil-status').textContent = 'Apelido apagado.';
-    apelido.focus();
-  });
+  else
+    elemento('sair').addEventListener('click', () => {
+      localStorage.removeItem(chavePerfil);
+      apelido.value = '';
+      apelido.setCustomValidity('');
+      elemento('perfil-status').textContent = 'Apelido apagado.';
+      apelido.focus();
+    });
 }
