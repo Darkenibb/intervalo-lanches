@@ -3,39 +3,36 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Consulte o cardápio e as promoções da cantina escolar.">
-  <title>SOS Cantina Tech</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="app.js" defer></script>
+  <meta name="description" content="Cardápio, ofertas e pedidos demonstrativos da cantina escolar.">
+  <title>Cardápio | Intervalo Lanches</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/catalogo.js" defer></script>
+  <script src="js/script.js" defer></script>
 </head>
-<body>
-  <header><div class="wrap bar"><a class="brand" href="#inicio">SOS Cantina<span>Tech</span></a><a class="cart-link" href="#carrinho">Carrinho <span id="count">0</span></a></div></header>
-  <main id="inicio" class="wrap">
-    <section class="hero" aria-labelledby="hero-title">
-      <div><p class="eyebrow">Cantina escolar</p><h1 id="hero-title">Seu lanche,<br>sem perder o recreio.</h1><p>Escolha o que vai comer e simule sua pré-reserva.</p><a class="button" href="#cardapio">Ver cardápio ↓</a></div>
-      <img src="lanche.jpg" alt="Sanduíche com alface e tomate" width="640" height="480">
-    </section>
-    <section class="offers" aria-label="Promoções">
-      <article><p class="eyebrow">Promoção do dia</p><h2>Combo do recreio</h2><p>Coxinha + suco de laranja</p><strong><s>R$ 11,50</s> R$ 9,50</strong><button type="button" data-add="combo">Adicionar</button></article>
-      <article><p class="eyebrow">Promoção da semana</p><h2>Dupla de queijo</h2><p>Dois pães de queijo</p><strong><s>R$ 8,00</s> R$ 6,50</strong><button type="button" data-add="dupla">Adicionar</button></article>
-    </section>
-    <div class="columns">
-      <section id="cardapio" aria-labelledby="menu-title">
-        <h2 id="menu-title">Cardápio</h2>
-        <label for="search">Buscar produto</label>
-        <input id="search" type="search" placeholder="Ex.: coxinha, suco…">
-        <p id="results" role="status"></p>
-        <div id="products" class="products"></div>
-      </section>
-      <section id="carrinho" aria-labelledby="cart-title">
-        <h2 id="cart-title">Seu carrinho</h2>
-        <ul id="items"></ul>
-        <p class="total">Total <strong id="total">R$ 0,00</strong></p>
-        <button type="button" id="reserve" disabled>Simular pré-reserva</button>
-        <p id="receipt" role="status"></p>
-      </section>
-    </div>
-  </main>
-  <footer class="wrap">SOS Cantina Tech · Projeto escolar DevLanches · <a href="trabalho/">Arquivos do projeto</a></footer>
+<body data-page="index.html">
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <header><div class="wrap bar">
+    <a class="brand" href="index.html">Intervalo<span>Lanches</span></a>
+    <nav aria-label="Navegação principal"><a href="index.html#cardapio">Cardápio</a><a href="index.html#ofertas">Ofertas</a><a href="login.html">Perfil</a><a class="cart-link" href="carrinho.html">Carrinho <span id="contador">0</span></a></nav>
+  </div></header>
+  <main class="wrap" id="conteudo">
+<section class="hero">
+  <div class="hero-copy"><p class="kicker">Cantina escolar</p><h1>Seu intervalo<br>pede um <em>lanche.</em></h1>
+  <p>Escolha seu favorito do cardápio e monte seu pedido para o recreio.</p>
+  <a class="button" href="#cardapio">Explorar cardápio <span aria-hidden="true">↓</span></a></div>
+  <img class="hero-img" src="imagem/hamburguer.jpg" alt="Hambúrguer com queijo, tomate e salada" width="1300" height="868">
+</section>
+<section class="offers" id="ofertas" aria-label="Ofertas">
+  <article><p class="kicker">Oferta do dia</p><h2>X-Burguer + Refrigerante</h2><p>R$ 23,90</p><button type="button" data-offer="dia">Adicionar oferta</button></article>
+  <article><p class="kicker">Destaque da semana</p><h2>Cachorro-quente + Suco</h2><p>R$ 19,90</p><button type="button" data-offer="semana">Adicionar destaque</button></article>
+</section>
+<section id="cardapio" aria-labelledby="menu-title">
+  <div class="section-top"><h2 id="menu-title">Cardápio</h2><label>Buscar produto <input type="search" id="busca" placeholder="Ex.: X-Bacon, pão de queijo"></label></div>
+  <div id="categorias" class="categories" aria-label="Categorias"></div>
+  <p id="quantidade-resultados" class="muted" role="status"></p>
+  <div id="produtos" class="products"></div>
+</section>
+<p id="notificacao" class="toast" role="status"></p></main>
+  <footer class="wrap"><span>Intervalo Lanches · Projeto escolar</span><a href="trabalho/index.html">Arquivos do projeto</a></footer>
 </body>
 </html>

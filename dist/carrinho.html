@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cardápio, ofertas e pedidos demonstrativos da cantina escolar.">
+  <title>Carrinho | Intervalo Lanches</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/catalogo.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body data-page="carrinho.html">
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <header><div class="wrap bar">
+    <a class="brand" href="index.html">Intervalo<span>Lanches</span></a>
+    <nav aria-label="Navegação principal"><a href="index.html#cardapio">Cardápio</a><a href="index.html#ofertas">Ofertas</a><a href="login.html">Perfil</a><a class="cart-link" href="carrinho.html">Carrinho <span id="contador">0</span></a></nav>
+  </div></header>
+  <main class="wrap" id="conteudo">
+<h1 class="page-title">Seu carrinho</h1>
+<div class="flow"><section class="panel"><h2>Itens do pedido</h2><div id="itens"></div></section>
+<aside class="panel summary"><h2>Resumo</h2><p class="total">Total <strong id="total"></strong></p>
+<a class="button" id="finalizar" href="pagamento.html">Continuar para o pedido</a>
+<button type="button" class="secondary" id="limpar">Esvaziar carrinho</button>
+<a href="index.html#cardapio">Voltar ao cardápio</a></aside></div></main>
+  <footer class="wrap"><span>Intervalo Lanches · Projeto escolar</span><a href="trabalho/index.html">Arquivos do projeto</a></footer>
+</body>
+</html>
