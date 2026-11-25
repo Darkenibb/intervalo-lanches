@@ -26,10 +26,10 @@ O projeto usa HTML, CSS responsivo com Grid e Flexbox, JavaScript e `localStorag
 
 | Função | Integrante |
 | --- | --- |
-| Designer Front-End | Preencher |
-| CSS Master | Preencher |
-| JavaScript Ninja | Preencher |
-| Guardião do Git | Preencher |
+| Designer Front-End | Kayo |
+| CSS Master | Kayo |
+| JavaScript Ninja | Kayo |
+| Guardião do Git | Kayo |
 
 ## Branches
 
