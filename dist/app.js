@@ -5,6 +5,7 @@ const products = [
   { id: 'sanduiche', name: 'Sanduíche natural', details: 'Frango, alface e tomate', cents: 850 },
   { id: 'bolo', name: 'Bolo de cenoura', details: 'Fatia com cobertura de chocolate', cents: 550 },
   { id: 'agua', name: 'Água mineral', details: 'Garrafa de 500 ml', cents: 300 },
+  { id: 'dupla', name: 'Dupla de queijo', details: 'Dois pães de queijo', cents: 650 },
   { id: 'combo', name: 'Combo do recreio', details: 'Coxinha e suco de laranja', cents: 950 },
 ];
 const cart = new Map();
