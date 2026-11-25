@@ -1,32 +1,32 @@
-# SOS Cantina Tech
+# Intervalo Lanches — estudo de caso
 
-## Situação 1 — conflito em index.html
+O Intervalo Lanches adapta o site Fast Lanches para o cenário da cantina escolar. Usa o cardápio e os preços do projeto enviado, com uma nova identidade visual e uma simulação de retirada no intervalo.
 
-1. Os alunos trabalharam em paralelo. Se alteraram de formas incompatíveis o mesmo trecho de `index.html`, a integração exige uma decisão manual. Um push também pode ser rejeitado quando o remoto já tem commits novos, mesmo que a integração desses commits seja automática.
-2. Ao fazer merge, o Git compara as duas versões com o ancestral comum. Se não conseguir combinar mudanças incompatíveis, informa os arquivos em conflito e em geral marca os trechos com `<<<<<<<`, `=======` e `>>>>>>>`. Use `git status` para listar os conflitos, combine as mudanças, teste e finalize o merge.
-3. Dividir responsabilidades por arquivo ou seção, combinar mudanças no HTML compartilhado e integrar alterações pequenas com frequência. Atualizar a branch com a `main` antes da revisão facilita detectar conflitos cedo.
-4. As branches isolam mudanças e mantêm a `main` utilizável. O pull request permite revisar e testar a combinação. Ainda pode haver conflito na hora de integrar.
+## Situação 1 — três alunos editam index.html
 
-## Situação 2 — promoções da semana
+1. Se os três alunos mudam de formas incompatíveis o mesmo trecho do cabeçalho, das ofertas ou do cardápio, pode ocorrer um conflito na integração. Um push também pode ser rejeitado se a branch remota já recebeu outros commits.
+2. O Git compara as duas versões com o ancestral comum. Quando não consegue combinar as edições, indica o arquivo em conflito e normalmente marca os trechos com `<<<<<<<`, `=======` e `>>>>>>>`.
+3. Combine antes quem altera cada trecho. No Intervalo Lanches, o HTML organiza as telas, o CSS define o visual e `js/catalogo.js` concentra os dados dos produtos. Integre mudanças em commits pequenos e revise o resultado.
+4. As branches permitem trabalhar separadamente e revisar cada contribuição via pull request. Ao resolver um conflito, preserve a navegação e teste a adição de ofertas antes de concluir o merge.
 
-1. Criar uma branch a partir da `main` atualizada para preservar a versão em funcionamento durante o desenvolvimento.
-2. Usar `feat/promocoes-semana`.
-3. Implementar e testar a seção, enviar a branch ao GitHub, abrir um pull request para `main`, revisar o layout e a adição da oferta ao carrinho e fazer o merge. Neste projeto, o histórico inclui a integração local da branch.
+## Situação 2 — criar o destaque semanal
+
+1. Crie uma branch a partir da `main` atualizada para manter a versão do cardápio em funcionamento durante a mudança.
+2. Um nome adequado seria `feat/ofertas-da-semana`. Nesta revisão, o destaque do Cachorro-quente + Suco foi integrado em `feat/intervalo-lanches`.
+3. Envie a branch e abra um pull request para `main`. Verifique se o botão adiciona o combo correto por R$ 19,90 e se a oferta aparece no celular. Depois da revisão, faça o merge.
 
 ## Situação 3 — botões sobrepostos no celular
 
-1. A área responsável é o CSS responsivo. O CSS Master deve verificar as regras de layout e o Designer Front-End pode ajudar a ajustar a estrutura, se necessário.
-2. Usar a configuração de viewport, Grid com colunas fluidas, Flexbox com quebra de linha, espaçamento e media queries. Controles do carrinho precisam caber em telas estreitas e ter área de toque confortável.
-3. Testar em larguras de 320, 375, 768 e 1280 pixels e em um celular real. Conferir busca, adição e remoção de itens, total e pré-reserva. Verificar se os botões continuam tocáveis, sem sobreposição nem rolagem horizontal.
+1. O CSS Master é responsável pelo layout responsivo, com ajuda do Designer Front-End se for necessário alterar a estrutura HTML.
+2. O Intervalo Lanches usa Grid para reorganizar o cardápio e as colunas do carrinho. Flexbox permite que a navegação, os filtros e os controles de quantidade quebrem linha em telas estreitas.
+3. Para validar, teste em 320, 375, 768 e 1280 pixels. Confira se há rolagem horizontal, se os botões são tocáveis e se a busca, o carrinho e a finalização funcionam. Repita em um celular real.
 
-## Roteiro de 5 minutos
+## Roteiro de cinco minutos
 
-| Tempo | Demonstração |
+| Tempo | O que apresentar |
 | --- | --- |
-| 0:00–0:40 | Apresente o problema da fila e a proposta da DevLanches. Mostre a tela inicial. |
-| 0:40–1:55 | Mostre as promoções do dia e da semana. Busque “pao”, adicione pão de queijo e um combo, altere as quantidades e confira o total. Simule a pré-reserva. |
-| 1:55–2:40 | Abra a visualização em largura de celular. Demonstre os controles do carrinho e a organização do cardápio. |
-| 2:40–3:55 | Mostre `git branch -a` e `git log --oneline --graph --all`. Identifique as quatro branches e os commits de integração. |
-| 3:55–5:00 | Explique o cenário de conflito em `index.html`, a entrega da promoção semanal via branch e a solução de layout responsivo. Encerre explicando que a pré-reserva é demonstrativa. |
-
-Foto do sanduíche via [Unsplash](https://images.unsplash.com/photo-1528735602780-2552fd46c7af).
+| 0:00–0:40 | Explique o problema da fila e mostre a nova página inicial do Intervalo Lanches, adaptada do Fast Lanches. |
+| 0:40–1:50 | Mostre as duas ofertas. Busque “pao de queijo” e adicione um produto. Selecione uma categoria para limpar a busca e ver os itens dela. |
+| 1:50–2:50 | Abra o carrinho, altere a quantidade e confira o total. Simule a pré-reserva com o apelido “Estudante 01” e escolha um pagamento demonstrativo. |
+| 2:50–3:35 | Mostre a tela em largura de celular. Aponte a quebra de linha dos filtros e dos botões do carrinho. |
+| 3:35–5:00 | Execute `git branch -a` e `git log --oneline --graph --all`. Aponte as branches da revisão e explique como a equipe resolveria edições concorrentes e integraria uma oferta urgente. |
