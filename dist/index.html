@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Consulte o cardápio e as promoções da cantina escolar.">
+  <title>SOS Cantina Tech</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header><div class="wrap bar"><a class="brand" href="#inicio">SOS Cantina<span>Tech</span></a><a class="cart-link" href="#carrinho">Carrinho <span id="count">0</span></a></div></header>
+  <main id="inicio" class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div><p class="eyebrow">Cantina escolar</p><h1 id="hero-title">Seu lanche,<br>sem perder o recreio.</h1><p>Escolha o que vai comer e simule sua pré-reserva.</p><a class="button" href="#cardapio">Ver cardápio ↓</a></div>
+      <img src="lanche.jpg" alt="Sanduíche com alface e tomate" width="640" height="480">
+    </section>
+    <section class="offers" aria-label="Promoções">
+      <article><p class="eyebrow">Promoção do dia</p><h2>Combo do recreio</h2><p>Coxinha + suco de laranja</p><strong><s>R$ 11,50</s> R$ 9,50</strong><button type="button" data-add="combo">Adicionar</button></article>
+    </section>
+    <div class="columns">
+      <section id="cardapio" aria-labelledby="menu-title">
+        <h2 id="menu-title">Cardápio</h2>
+        <label for="search">Buscar produto</label>
+        <input id="search" type="search" placeholder="Ex.: coxinha, suco…">
+        <p id="results" role="status"></p>
+        <div id="products" class="products"></div>
+      </section>
+      <section id="carrinho" aria-labelledby="cart-title">
+        <h2 id="cart-title">Seu carrinho</h2>
+        <ul id="items"></ul>
+        <p class="total">Total <strong id="total">R$ 0,00</strong></p>
+        <button type="button" id="reserve" disabled>Simular pré-reserva</button>
+        <p id="receipt" role="status"></p>
+      </section>
+    </div>
+  </main>
+  <footer class="wrap">SOS Cantina Tech · Projeto escolar DevLanches</footer>
+</body>
+</html>
